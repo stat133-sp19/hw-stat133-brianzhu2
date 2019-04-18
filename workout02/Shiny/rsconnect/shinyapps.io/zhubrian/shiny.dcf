@@ -1,0 +1,10 @@
+name: shiny
+title:
+username:
+account: zhubrian
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 874188
+bundleId: 2020397
+url: https://zhubrian.shinyapps.io/shiny/
+when: 1555560893.91768
