@@ -1,0 +1,68 @@
+---
+title: "Getting Started with binomial"
+author: "Brian Zhu"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to binomial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+library(binomial)
+```
+
+## Binomial
+
+`"binomial"` is a simple [R](http://www.r-project.org/) package with functions that calculate various information about a binomial random variable. The binomial distribution is a very common distribution found in probability, and this package aims to show important information about it.
+
+## Creating a `binvar`
+
+To create a `"binvar"` object, use the function `bin_variable()`:
+
+```{r}
+bin <- bin_variable()
+bin
+```
+
+By default, `bin_variable()` creates a binomial random variable with probability 0.5 and 10 trials. You can find a brief summary of this binomial variable by using summary.binvar():
+
+```{r}
+bin <- bin_variable(prob = 0.5, trials = 5)
+binsum <- summary(bin)
+binsum
+```
+
+We have also provided the measures shown in the summary as separate methods for you to use:
+
+```{r}
+# mean
+bin_mean(prob = 0.5, trials = 5)
+# variance
+bin_variance(prob = 0.5, trials = 5)
+# mode
+bin_mode(prob = 0.5, trials = 5)
+# skewness
+bin_skewness(prob = 0.5, trials = 5)
+# kurtosis
+bin_kurtosis(prob = 0.5, trials = 5)
+```
+
+## Probability
+
+Another important part of the binomial random variable is the probability distribution. We have provided  basic functions to calculate the probability distribution and cumulative distribution. You can also plot these distributions to see what they look like. These distributions are built upon basic functions like `bin_choose()` and `bin_probability()`, which you can use to find individual probabilities with parameters of your choice.
+
+```{r}
+# 5 choose 2
+bin_choose(n = 5, k = 2)
+# probability of getting 2 successes in 5 trials with probability of success = 0.5
+bin_probability(prob = 0.5, trials = 5, success = 2)
+# probability distribution function and plot
+pdf <- bin_distribution(prob = 0.5, trials = 10)
+plot(pdf)
+# cumulative distribution function and plot
+cdf <- bin_cumulative(prob = 0.5, trials = 10)
+plot(cdf)
+```
